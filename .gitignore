@@ -1,0 +1,9 @@
+*jar
+/lib/
+/autodoc/
+/docs/
+/logs/
+/classes/
+.lein-failures
+.lein-deps-sum
+.DS_Store
