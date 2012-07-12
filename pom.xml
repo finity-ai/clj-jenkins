@@ -7,6 +7,12 @@
   <version>0.1.0-SNAPSHOT</version>
   <name>clj-jenkins</name>
   <description>Clojure client for Jenkins</description>
+  <scm>
+    <connection>scm:git:git://github.com/smallrivers/clj-jenkins.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/smallrivers/clj-jenkins.git</developerConnection>
+    <tag>33e9df3835572a287192b699249bd03ebbab5fcd</tag>
+    <url>https://github.com/smallrivers/clj-jenkins</url>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
@@ -20,107 +26,6 @@
         <directory>test-resources</directory>
       </testResource>
     </testResources>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.cloudhoist.plugin</groupId>
-          <artifactId>zi</artifactId>
-          <configuration />
-        </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.5</version>
-        <executions>
-          <execution>
-            <id>Pre copy resources</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration />
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <executions>
-          <execution>
-            <id>pre-compile java code</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration />
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <id>Add custom sourceroots dirs</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/gen-src/clj</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.cloudhoist.plugin</groupId>
-        <artifactId>zi</artifactId>
-        <version>0.4.2</version>
-        <executions>
-          <execution>
-            <id>Compile clj source code</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>Run clojure tests</id>
-            <phase>test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>Add resources to artifact</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration />
-      </plugin>
-      <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>2.4.1</version>
-        <executions>
-          <execution>
-            <id>Clean AOT compiled source code</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration />
-      </plugin>
-    </plugins>
   </build>
   <repositories>
     <repository>
@@ -139,14 +44,9 @@
       <version>1.3.0</version>
     </dependency>
     <dependency>
-      <groupId>com.ning</groupId>
-      <artifactId>async-http-client</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>data.json</artifactId>
-      <version>0.1.1</version>
+      <groupId>org.clojars.smallrivers</groupId>
+      <artifactId>aleph</artifactId>
+      <version>0.2.1-rc4</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

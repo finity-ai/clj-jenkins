@@ -1,8 +1,9 @@
 clj-jenkins:
 A simple clojure client for jenkins builder.
-This project will offer simple functionalities :
+This project offer simple functionalities :
 * List jobs
 * List builds
+* List artifacts downloads
 * Run jobs
 
 ## Redistribution
