@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>clj-jenkins</groupId>
   <artifactId>clj-jenkins</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>clj-jenkins</name>
   <description>Clojure client for Jenkins</description>
   <scm>
     <connection>scm:git:git://github.com/smallrivers/clj-jenkins.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/smallrivers/clj-jenkins.git</developerConnection>
-    <tag>33e9df3835572a287192b699249bd03ebbab5fcd</tag>
+    <tag>9726027d900db084434617b1dc48887a02d8b279</tag>
     <url>https://github.com/smallrivers/clj-jenkins</url>
   </scm>
   <build>
@@ -47,21 +47,6 @@
       <groupId>org.clojars.smallrivers</groupId>
       <artifactId>aleph</artifactId>
       <version>0.2.1-rc4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.16</version>
     </dependency>
   </dependencies>
 </project>
