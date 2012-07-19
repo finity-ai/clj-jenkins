@@ -1,4 +1,4 @@
-(defproject clj-jenkins "0.1.0"
+(defproject clj-jenkins "0.1.1-SNAPSHOT"
   :description "Clojure client for Jenkins"
   :dependencies [[org.clojure/clojure            "1.3.0"]
                  [org.clojars.smallrivers/aleph  "0.2.1-rc4"]]

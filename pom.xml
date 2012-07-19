@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>clj-jenkins</groupId>
   <artifactId>clj-jenkins</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
   <name>clj-jenkins</name>
   <description>Clojure client for Jenkins</description>
   <scm>
     <connection>scm:git:git://github.com/smallrivers/clj-jenkins.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/smallrivers/clj-jenkins.git</developerConnection>
-    <tag>9726027d900db084434617b1dc48887a02d8b279</tag>
+    <tag>ecc7120a7df2276f0b6a28a3e6dd982d350393bf</tag>
     <url>https://github.com/smallrivers/clj-jenkins</url>
   </scm>
   <build>
