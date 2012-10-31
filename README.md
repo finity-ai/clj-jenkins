@@ -3,7 +3,7 @@ A simple clojure client for jenkins builder.
 This project offer simple functionalities :
 * List jobs
 * List builds
-* List artifacts downloads
+* List artifacts
 * Run jobs
 
 ## Redistribution
