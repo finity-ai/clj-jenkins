@@ -53,9 +53,12 @@
   (->> build :artifacts (map #(assoc % :download-url (str (:url build) "artifact/" (:relativePath %))))))
 
 (defn list-artifacts
-  "List artifacts of the latest successful build"
-  [job-name]
-  (let [build (->> (format "http://%s/job/%s/api/json?depth=2" *jenkins* job-name) get-json :lastSuccessfulBuild)] 
+  "List artifacts of given optional build number or the latest successful build"
+  [job-name & {:keys [build-number]}]
+  (let [response (->> (format "http://%s/job/%s/api/json?depth=2" *jenkins* job-name) get-json)
+        build (if build-number
+                (->> response :builds (filter #(= build-number (:number %))) first)
+                (:lastSuccessfulBuild response))]
     (with-download-url build)))
 
 (defn list-module-artifacts
