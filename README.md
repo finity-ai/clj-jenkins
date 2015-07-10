@@ -1,10 +1,25 @@
 clj-jenkins:
 A simple clojure client for jenkins builder.
-This project offer simple functionalities :
-* List jobs
-* List builds
-* List artifacts
-* Run jobs
+
+## Usage
+
+```clj
+(with-jenkins "jenkins.smallrivers.com/jenkins"
+              {:password "pass", :username "admin"}
+              (list-builds "clj-jenkins-master"))
+              
+(with-jenkins "jenkins.smallrivers.com/jenkins"
+              {:password "pass", :username "admin"}
+              (list-jobs))
+              
+(with-jenkins "jenkins.smallrivers.com/jenkins"
+              {:password "pass", :username "admin"}
+              (list-artifacts "clj-jenkins-master"))
+              
+(with-jenkins "jenkins.smallrivers.com/jenkins"
+              {:password "pass", :username "admin"}
+              (submit-job "clj-jenkins-master"))
+```
 
 ## Redistribution
 

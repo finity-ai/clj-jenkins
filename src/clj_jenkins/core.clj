@@ -1,5 +1,5 @@
 (ns clj-jenkins.core
-  (:require [clj-jenkins.http :as http]))
+  (:require [aleph.http :as aleph-http]))
   
 (def ^{:dynamic true} *jenkins*)
 
@@ -14,9 +14,15 @@
      (do ~@body)))
 
 (defn get-json
-  "Return the JSON retrieved at the specified url using http GET"
-  [url]
-  (http/get-json url *creds*))
+  "Execute a GET query with optional basic-auth and return json"
+  [url & [opts]]
+  (let [{:keys [username password]} *creds*]
+    (-> url
+        (aleph-http/get (merge {:basic-auth [username password]
+                                :as         :json}
+                               opts))
+        deref
+        :body)))
 
 (defn get-jenkins-infos
   "Return the information of the Jenkins server"
