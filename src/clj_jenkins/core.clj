@@ -1,6 +1,6 @@
 (ns clj-jenkins.core
   (:require [aleph.http :as aleph-http]))
-  
+
 (def ^{:dynamic true} *jenkins*)
 
 (def ^{:dynamic true} *creds*)
@@ -46,8 +46,8 @@
   []
   (let [bjson (get-json (format "http://%s/computer/api/json?depth=1" *jenkins*))]
     (flatten
-      (for [computer (:computer bjson)]
-        (filter :currentExecutable (:executors computer))))))
+     (for [computer (:computer bjson)]
+       (filter :currentExecutable (:executors computer))))))
 
 (defn list-builds
   "List builds for the specified job"
