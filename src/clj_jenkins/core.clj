@@ -1,6 +1,6 @@
 (ns clj-jenkins.core
-  (:require [clj-jenkins.http :as http]))
-  
+  (:require [aleph.http :as aleph-http]))
+
 (def ^{:dynamic true} *jenkins*)
 
 (def ^{:dynamic true} *creds*)
@@ -14,9 +14,15 @@
      (do ~@body)))
 
 (defn get-json
-  "Return the JSON retrieved at the specified url using http GET"
-  [url]
-  (http/get-json url *creds*))
+  "Execute a GET query with optional basic-auth and return json"
+  [url & [opts]]
+  (let [{:keys [username password]} *creds*]
+    (-> url
+        (aleph-http/get (merge {:basic-auth [username password]
+                                :as         :json}
+                               opts))
+        deref
+        :body)))
 
 (defn get-jenkins-infos
   "Return the information of the Jenkins server"
@@ -40,8 +46,8 @@
   []
   (let [bjson (get-json (format "http://%s/computer/api/json?depth=1" *jenkins*))]
     (flatten
-      (for [computer (:computer bjson)]
-        (filter :currentExecutable (:executors computer))))))
+     (for [computer (:computer bjson)]
+       (filter :currentExecutable (:executors computer))))))
 
 (defn list-builds
   "List builds for the specified job"
