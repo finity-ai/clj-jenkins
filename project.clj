@@ -7,6 +7,6 @@
                  [org.clojure/tools.logging "0.3.1"]
                  [aleph "0.4.0"]
                  [cheshire "5.5.0"]]
-  :plugins [[lein-cljfmt "0.1.10"]]
+  :plugins [[lein-cljfmt "0.3.0"]]
   :autodoc {:name       "clj-jenkins"
             :page-title "clojure client for jenkins"})

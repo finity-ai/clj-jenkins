@@ -18,8 +18,9 @@
   [url & [opts]]
   (let [{:keys [username password]} *creds*]
     (-> url
-        (aleph-http/get (merge {:basic-auth [username password]
-                                :as         :json}
+        (aleph-http/get (merge (when (and username password)
+                                 {:basic-auth [username password]
+                                  :as         :json})
                                opts))
         deref
         :body)))
@@ -75,6 +76,6 @@
     (with-download-url build)))
 
 (defn submit-job
-  "schedule a new build of job-name"
-  [job-name]
-  (get-json (format "http://%s/job/%s/build" *jenkins* job-name)))
+  "schedule a new build of job-name. Extra parameters are sent as query parameters."
+  [job-name & {:as params}]
+  (apply get-json (format "http://%s/job/%s/build" *jenkins* job-name) {:query-params params}))
