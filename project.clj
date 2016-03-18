@@ -1,4 +1,4 @@
-(defproject clj-jenkins "0.1.4"
+(defproject clj-jenkins "0.1.5"
   :description "Clojure client for Jenkins"
   :url "https://github.com/smallrivers/clj-jenkins"
   :license {:name "MIT public License"
