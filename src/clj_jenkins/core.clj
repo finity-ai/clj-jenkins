@@ -13,7 +13,7 @@
              *creds*   ~creds]
      (do ~@body)))
 
-(defn- get-json
+(defn get-json
   "Execute a GET query with optional basic-auth and return json"
   [url & [opts]]
   (let [{:keys [username password]} *creds*]
