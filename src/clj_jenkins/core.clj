@@ -13,7 +13,7 @@
              *creds*   ~creds]
      (do ~@body)))
 
-(defn get-json
+(defn- get-json
   "Execute a GET query with optional basic-auth and return json"
   [url & [opts]]
   (let [{:keys [username password]} *creds*]
@@ -79,3 +79,10 @@
   "schedule a new build of job-name. Extra parameters are sent as query parameters."
   [job-name & {:as params}]
   (apply get-json (format "http://%s/job/%s/build" *jenkins* job-name) {:query-params params}))
+
+(defn submit-parametric-job
+  "schedule a new build of job-name configured with build parameters
+  (https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Build).
+  Extra parameters are sent as query parameters."
+  [job-name & {:as params}]
+  (apply get-json (format "http://%s/job/%s/buildWithParameters" *jenkins* job-name) {:query-params params}))
