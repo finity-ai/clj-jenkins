@@ -60,9 +60,16 @@
   (->> build :artifacts (map #(assoc % :download-url (str (:url build) "artifact/" (:relativePath %))))))
 
 (defn list-artifacts
-  "List artifacts of given optional build number or the latest successful build"
-  [job-name & {:keys [build-number]}]
-  (let [response (->> (format "http://%s/job/%s/api/json?depth=2" *jenkins* job-name) get-json)
+  "List artifacts of given optional build number or the latest successful build.
+
+  If the target job is a multibranch pipeline the multibranch-version optional parameter
+  is used to specify the branch and/or tag to use."
+  [job-name & {:keys [build-number multibranch-version]}]
+  (let [response (-> (format "http://%s/job/%s%s/api/json?depth=2"
+                             *jenkins*
+                             job-name
+                             (if multibranch-version (str "/job/" multibranch-version) ""))
+                     (get-json))
         build (if build-number
                 (->> response :builds (filter #(= build-number (:number %))) first)
                 (:lastSuccessfulBuild response))]
